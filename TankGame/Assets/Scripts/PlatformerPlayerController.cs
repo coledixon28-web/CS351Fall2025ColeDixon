@@ -17,8 +17,17 @@ public class PlatformerPlayerController : MonoBehaviour
 	private bool isGrounded;
 	private float horizontalInput;
 	
+	//set these in inspector
+	public AudioClip jumpSound;
+	
+	private AudioSource playerAudio;
+
+	
+
     void Start()
     {
+	playerAudio = GetComponent<AudioSource>();
+
         	//get the ribigbody 2d component attached to gameobject
 	rb = GetComponent<Rigidbody2D>();
 
@@ -28,7 +37,7 @@ public class PlatformerPlayerController : MonoBehaviour
 
 	}
 
-
+	
 
     }
 
@@ -43,6 +52,10 @@ public class PlatformerPlayerController : MonoBehaviour
 	{
 	//apply an upward force for jumping
 	rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+	//play jump sound effect
+	playerAudio.PlayOneShot(jumpSound, 1.0f);
+	
+	
 	}
 
 
