@@ -21,11 +21,17 @@ public class PlatformerPlayerController : MonoBehaviour
 	public AudioClip jumpSound;
 	
 	private AudioSource playerAudio;
+//ref to animator
+	private Animator animator;
 
-	
 
     void Start()
     {
+	//set ref to animator
+	animator =  GetComponent<Animator>();
+	
+
+
 	playerAudio = GetComponent<AudioSource>();
 
         	//get the ribigbody 2d component attached to gameobject
@@ -67,7 +73,16 @@ public class PlatformerPlayerController : MonoBehaviour
 
 	rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
 
+	//set animator parameter x velocity abs to the absolute value of x velocity
+	animator.SetFloat("xVelocityAbs", Mathf.Abs(rb.velocity.x));
+
+	//set animator parameter y velocity  to y velocity
+	animator.SetFloat("yVelocity", rb.velocity.y);
+
+	
 	isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+	animator.SetBool("onGround", isGrounded);
 
 	if (horizontalInput > 0)
 	{
