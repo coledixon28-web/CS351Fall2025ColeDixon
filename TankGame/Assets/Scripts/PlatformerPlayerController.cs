@@ -86,13 +86,15 @@ public class PlatformerPlayerController : MonoBehaviour
 
 	if (horizontalInput > 0)
 	{
-	transform.localScale = new Vector3(1f, 1f, 1f); // right facing
+	transform.rotation = Quaternion.Euler(0, 0, 0);
+
+
 
 	}
 
 	else if (horizontalInput < 0)
 	{
-	transform.localScale = new Vector3(-1f, 1f, 1f);  // left facing
+	transform.rotation = Quaternion.Euler(0, 100, 0);
 	}
 
 
