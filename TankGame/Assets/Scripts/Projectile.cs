@@ -9,7 +9,9 @@ public class Projectile : MonoBehaviour
 
 	//damage of projectile w default value of 20
 	public int damage = 20;
-
+	
+	//impact effect of projectile
+	public GameObject impactEffect;
 
 
     // Start is called before the first frame update
@@ -37,6 +39,11 @@ enemy.TakeDamage(damage);
 
 if (hitInfo.gameObject.tag != "Player")
 {
+//instantiate impact effect
+Instantiate(impactEffect, transform.position, Quaternion.identity);
+
+
+
 //destory projectile
 Destroy(gameObject);
 }
