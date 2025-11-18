@@ -70,9 +70,10 @@ public class PlatformerPlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
 
-
+	if (!PlayerHealth.hitRecently)
+	{
 	rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
-
+	}
 	//set animator parameter x velocity abs to the absolute value of x velocity
 	animator.SetFloat("xVelocityAbs", Mathf.Abs(rb.velocity.x));
 
