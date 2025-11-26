@@ -10,6 +10,7 @@ public class EnemyMoveWalkingChase : MonoBehaviour
 	private Transform playerTransform;
 	private Rigidbody2D rb;
 	private Animator anim;
+	private SpriteRenderer sr;
 
 
 
@@ -18,6 +19,8 @@ public class EnemyMoveWalkingChase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+	//get sprite renderer
+	sr = GetComponent<SpriteRenderer>();
        //get rigidbody2d of enemy
 	rb = GetComponent<Rigidbody2D>();
 	
@@ -40,6 +43,7 @@ public class EnemyMoveWalkingChase : MonoBehaviour
 	playerDirection.Normalize();
 	playerDirection.y = 0f;
 	FacePlayer(playerDirection);
+
 	if (IsGroundAhead())
 	{
 	MoveTowardsPlayer(playerDirection);
@@ -47,10 +51,17 @@ public class EnemyMoveWalkingChase : MonoBehaviour
 	else
 	{
 		StopMoving();
+		//Debug.Log("no ground ahead");
 	}
 
 	}
+else 
+{
+//stop moving if player not in chase range
+StopMoving();
 
+
+}
     }
 bool IsGroundAhead()
 	{
@@ -66,11 +77,13 @@ private void FacePlayer(Vector2 playerDirection)
 	{
 	if (playerDirection.x < 0)
 	{
-	transform.rotation = Quaternion.Euler(0, 0, 0);
+	sr.flipX = false;
+	//transform.rotation = Quaternion.Euler(0, 0, 0);
 	}
 	else
 	{
-	transform.rotation = Quaternion.Euler(0, 180, 0);
+	//transform.rotation = Quaternion.Euler(0, 180, 0);
+	sr.flipX = true;
 	}
 	}
 private void MoveTowardsPlayer(Vector2 playerDirection)
