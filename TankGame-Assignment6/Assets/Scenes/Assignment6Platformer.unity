@@ -9919,6 +9919,8 @@ GameObject:
   - component: {fileID: 2039184858}
   - component: {fileID: 2039184861}
   - component: {fileID: 2039184862}
+  - component: {fileID: 2039184863}
+  - component: {fileID: 2039184864}
   m_Layer: 0
   m_Name: CrabEnemy
   m_TagString: Untagged
@@ -10054,6 +10056,41 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2039184863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039184857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2412032916085014095120850e547052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseRange: 4
+  enemyMovementSpeed: 1.5
+--- !u!50 &2039184864
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039184857}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &2077280402 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1814127018234532317, guid: 8fd61c810b9b9de4b90927e48f50b02e, type: 3}
